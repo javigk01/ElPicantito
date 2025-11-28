@@ -7,6 +7,6 @@ export const environment = {
   production: true,
   apiUrl: 'https://pseudoeconomical-deploringly-kizzy.ngrok-free.dev',
   // TODO: Reemplazar con tus URLs reales de Streamlit Cloud después del despliegue
-  chatbotAdminUrl: 'https://elpicantito-admin.streamlit.app',
-  chatbotUserUrl: 'https://elpicantito-user.streamlit.app'
+  chatbotAdminUrl: 'https://elpicantito-chatbot.streamlit.app/',
+  chatbotUserUrl: 'https://elpicantito-chatbotcito.streamlit.app/'
 };
