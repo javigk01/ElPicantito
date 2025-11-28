@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { environment } from '../../../../environments/environment';
 
 @Component({
@@ -172,7 +173,11 @@ import { environment } from '../../../../environments/environment';
 export class AdminSidebarComponent {
   @Input() activeRoute: string = '';
   showChatbot = false;
-  chatbotUrl = environment.chatbotAdminUrl;
+  chatbotUrl: SafeResourceUrl;
+
+  constructor(private sanitizer: DomSanitizer) {
+    this.chatbotUrl = this.sanitizer.bypassSecurityTrustResourceUrl(environment.chatbotAdminUrl);
+  }
 
   toggleChatbot() {
     this.showChatbot = !this.showChatbot;

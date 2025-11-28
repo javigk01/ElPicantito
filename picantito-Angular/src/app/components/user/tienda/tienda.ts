@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef } from '@angula
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ProductCardComponent } from '../../shared/product-card/product-card.component';
 import { ProductoService } from '../../../services/tienda/producto.service';
 import { Producto } from '../../../models/producto';
@@ -48,7 +49,7 @@ export class TiendaComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Estado del chatbot flotante
   showChatbot = false;
-  chatbotUrl = environment.chatbotUserUrl;
+  chatbotUrl: SafeResourceUrl;
 
   // Mantener referencia al observer para poder desconectarlo
   private scrollObserver: IntersectionObserver | null = null;
@@ -56,8 +57,11 @@ export class TiendaComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private productoService: ProductoService,
     private router: Router,
-    private elementRef: ElementRef
-  ) {}
+    private elementRef: ElementRef,
+    private sanitizer: DomSanitizer
+  ) {
+    this.chatbotUrl = this.sanitizer.bypassSecurityTrustResourceUrl(environment.chatbotUserUrl);
+  }
 
   ngOnInit(): void {
     this.cargarProductos();
