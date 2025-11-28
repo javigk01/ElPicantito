@@ -4,6 +4,14 @@ from openai import OpenAI
 import requests
 import json
 
+# Configuración de página para permitir iframe embedding
+st.set_page_config(
+    page_title="Chatbot Usuario - El Picantito",
+    page_icon="🌮",
+    layout="wide",
+    initial_sidebar_state="collapsed"
+)
+
 # === CONFIGURACIÓN DE LA API DE SPRING BOOT ===
 SPRINGBOOT_API_BASE = os.environ.get("SPRINGBOOT_API_BASE", "http://localhost:9998")
 

@@ -3,6 +3,15 @@ import streamlit as st
 from openai import OpenAI
 import requests
 import json
+
+# Configuración de página para permitir iframe embedding
+st.set_page_config(
+    page_title="Chatbot Admin - El Picantito",
+    page_icon="🤖",
+    layout="wide",
+    initial_sidebar_state="collapsed"
+)
+
 # para la api de deepseek se openrouter
 # === CONFIGURACIÓN DE LA API DE SPRING BOOT ===
 SPRINGBOOT_API_BASE = os.environ.get("SPRINGBOOT_API_BASE", "http://localhost:9998")
