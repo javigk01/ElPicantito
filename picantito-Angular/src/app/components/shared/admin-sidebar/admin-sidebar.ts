@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-admin-sidebar',
@@ -53,7 +54,7 @@ import { RouterModule } from '@angular/router';
           </button>
         </div>
         <iframe 
-          src="http://chatbot:8501" 
+          [src]="chatbotUrl" 
           class="chatbot-iframe"
           [attr.frameborder]="0"
         ></iframe>
@@ -171,6 +172,7 @@ import { RouterModule } from '@angular/router';
 export class AdminSidebarComponent {
   @Input() activeRoute: string = '';
   showChatbot = false;
+  chatbotUrl = environment.chatbotAdminUrl;
 
   toggleChatbot() {
     this.showChatbot = !this.showChatbot;

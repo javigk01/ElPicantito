@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductCardComponent } from '../../shared/product-card/product-card.component';
 import { ProductoService } from '../../../services/tienda/producto.service';
 import { Producto } from '../../../models/producto';
+import { environment } from '../../../../environments/environment';
 
 declare var bootstrap: any;
 
@@ -47,6 +48,7 @@ export class TiendaComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Estado del chatbot flotante
   showChatbot = false;
+  chatbotUrl = environment.chatbotUserUrl;
 
   // Mantener referencia al observer para poder desconectarlo
   private scrollObserver: IntersectionObserver | null = null;
